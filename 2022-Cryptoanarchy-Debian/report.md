@@ -1,6 +1,6 @@
-# Final Report of My Summer of Bitcoin Project - CI for CADR
+# Report of My Summer of Bitcoin 2022 Project - CI for CADR
 ## Synopsis
-Before this [Summer of Bitcoin](https://www.summerofbitcoin.org/project-ideas-details?recordId=recaklAlmMd5cHfdq) project, [Crypto Anarchy Debian Repo (CADR)](github.com/debian-cryptoanarchy/cryptoanarchy-deb-repo-builder) lacks Continuous Integration (CI). I finally successfully implemented the CI using GitHub Actions default runners. The CI can be triggered manually, or by sending PRs as well as pushing directly to the master branch.
+Before this [Summer of Bitcoin](https://www.summerofbitcoin.org/project-ideas-details?recordId=recaklAlmMd5cHfdq) project, [Crypto Anarchy Debian Repo (CADR)](github.com/debian-cryptoanarchy/cryptoanarchy-deb-repo-builder) lacks Continuous Integration (CI), which troubles the new coming contributors because setting up the developing environment can be complex. I finally successfully implemented the CI using GitHub Actions default runners. The CI can be triggered manually, or by sending PRs as well as pushing directly to the master branch.
 
 The CI is divided into 2 jobs: 
 - The first one is the build job. It builds the running podman environment image, upload the image to Artifacts for reuse. Then with the podman environment, builds the CADR packages, and then uploads the built Debian packages to Artifacts. 
@@ -81,6 +81,18 @@ Then I successfully implemented and tested that method, and [it works](https://g
 
 The ci can be successful with the previous tests fixing PRs get merged first.
 
+## Final Deliverables
+After my mentor [@Kixunil](https://github.com/Kixunil)'s review, I began to use `--locked` parameter to make cargo use `cargo.lock` which contains correct versions. Also I fixed a security issue, make user account `user` and build/test with `user`, and upload the sha256sum result for the built deb packages afterwards so people can check hashes.
+
+In addition, I fixed tests for bitcoin-regtest after setting bitcoind nosettings enabled in [PR 205](https://github.com/debian-cryptoanarchy/cryptoanarchy-deb-repo-builder/pull/205).
+
+The CI runs successfully with the above changes, and everything works fine, nothing left to do.
+
+## Conclusion
+The Summer of Bitcoin project this time is a great experience for me as I learned a lot about Bitcoin and related DevOps knowledge.
+
+If you are interested in Bitcoin and would like to start contributing to Cryptoanarchy Debian, with my work, you can easily fork the repo and add more test or new packages by committing the code to your fork's master branch on GitHub, the CI will help you build the deb packages and locate possible errors, no need to setup the developing environment on your computer again.
+
 ## Summary of PRs submitted
 - [Set bitcoind log file under /var/log](https://github.com/debian-cryptoanarchy/cryptoanarchy-deb-repo-builder/pull/196)
 - [Set bitcoind nosettings enabled by default](https://github.com/debian-cryptoanarchy/cryptoanarchy-deb-repo-builder/pull/197)
@@ -90,6 +102,7 @@ The ci can be successful with the previous tests fixing PRs get merged first.
 - [(Issue) Bug: Test failed for bitcoin-regtest with error unneeded reindex for test-here-basic-electrs](https://github.com/debian-cryptoanarchy/cryptoanarchy-deb-repo-builder/issues/202)
 - [Try more times to test connecting to electrs-regtest](https://github.com/debian-cryptoanarchy/cryptoanarchy-deb-repo-builder/pull/203)
 - [Fix unneeded reindex error running tests](https://github.com/debian-cryptoanarchy/cryptoanarchy-deb-repo-builder/pull/204)
+- [Fix tests for bitcoin-regtest after setting bitcoind nosettings enabled](https://github.com/debian-cryptoanarchy/cryptoanarchy-deb-repo-builder/pull/205)
 - [Fix libcap-ng is too old for 'all' caps](https://github.com/Kixunil/debcrafter/pull/52)
 - [Force linked-hash-map version to be 0.5.4](https://github.com/Kixunil/debcrafter/pull/53)
 - [rustyline downgrade to 6.3.0 to fix compiling issue](https://github.com/debian-cryptoanarchy/cadr-guide/pull/14)
