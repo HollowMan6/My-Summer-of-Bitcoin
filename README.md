@@ -11,6 +11,10 @@
 [![GPL Licence](https://img.shields.io/badge/license-GPL-blue)](https://opensource.org/licenses/GPL-3.0/)
 [![Repo-Size](https://img.shields.io/github/repo-size/HollowMan6/My-Summer-of-Bitcoin.svg)](../../archive/master.zip)
 
+## 2022 Certificate 证书
+
+![2022](https://hollowman.ml/img/badges/SoB-2022.jpg)
+
 这里是我的"比特币之夏"活动记录与成果
 
 |  年份   |  项目名称  | 社区 | 申请材料 |
